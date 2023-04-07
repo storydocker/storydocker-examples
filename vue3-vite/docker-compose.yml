@@ -1,0 +1,11 @@
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 6006:6006
+    volumes:
+      - .:/usr/src/app/package/vue3-vite
+    command: npm run storybook
+    
