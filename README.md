@@ -23,3 +23,28 @@ As you change your local files, they should _automatically be changed in the Doc
    * `src/stories/` examples come from Storybook's default setup for the given framework
 7. run `docker compose up` in the root
 8. View the site at `localhost:6006`
+
+## How to build the storybook static site
+
+### In the running container
+
+If you want to build inside the running container, you'll need to `docker exec` into the container after you have determined the container ID
+
+1. Get ID either in the Docker desktop or by running:
+    `docker ps -q --no-trunc -l`
+    which will output just the docker container ID, something like:
+    `987654321aLongStringOfNumbersAndLetters123456789`
+2. Enter the container to a command prompt where you may run commands:
+    `docker exec -it THE_ID_OF_YOUR_CONTAINER /bin/sh`
+   which will bring you to a terminal inside the docker container:
+    `/usr/src/app #` <- ready for your command
+3. Build your Storybook static site by running:
+    `npm run build-storybook`
+4. This will build your Storybook static site which will be available **in your local app directory** at:
+    `<YOUR_APP_ROOT>/storybook-static`
+
+### Using docker compose
+
+You can change the last `command` line in `docker-compose.yml` to be:
+    `command: npm run build-storybook`
+And run `docker compose up` and it will build your storybook static site and copy it to your local app directory
