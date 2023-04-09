@@ -14,7 +14,9 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "storybook": "storybook dev -p ${SB_PORT:-6006}",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "lit": "^2.6.1"

@@ -4,8 +4,10 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
+      # must be same port as in Dockerfile, variable: `STORYBOOK_PORT`
       - 6006:6006
     volumes:
-      - .:/usr/src/app/package/react-vite
+      # `application` should be the same as `WORKSPACE_DIR` in `Dockerfile.example`
+      - .:/usr/src/app/workspaces/application
     command: npm run storybook
     
