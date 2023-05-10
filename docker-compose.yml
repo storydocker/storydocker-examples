@@ -1,0 +1,22 @@
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 6001:6001
+      - 6002:6002
+      - 6003:6003
+      - 6004:6004
+      - 6005:6005
+      - 6006:6006
+      - 6007:6007
+      - 6008:6008
+      - 6009:6009
+      - 6010:6010
+      - 2002:2002
+    volumes:
+      - ./examples:/usr/src/app/workspaces/
+    command: npx concurrently "npx wait-on http://localhost:6001 && npx wait-on http://localhost:6002 && npx wait-on http://localhost:6003 && npx wait-on http://localhost:6004 && npx wait-on http://localhost:6005 && npx wait-on http://localhost:6006 && npx wait-on http://localhost:6007 && npx wait-on http://localhost:6008 && npx wait-on http://localhost:6009 && npx wait-on http://localhost:6010 && npm run storybook -workspace workspaces/composition -- --port 2002" \
+      npx concurrently "npm run storybook -workspace workspaces/vite-lit -- --port 6001 --no-open" "npm run storybook -workspace workspaces/vite-lit-ts -- --port 6002 --no-open" "npm run storybook -workspace workspaces/vite-react -- --port 6003 --no-open" "npm run storybook -workspace workspaces/vite-react-ts -- --port 6004 --no-open" "npm run storybook -workspace workspaces/vite-svelte -- --port 6005 --no-open" "npm run storybook -workspace workspaces/vite-svelte-ts -- --port 6006 --no-open" "npm run storybook -workspace workspaces/vite-vanilla -- --port 6007 --no-open" "npm run storybook -workspace workspaces/vite-vanilla-ts -- --port 6008 --no-open" "npm run storybook -workspace workspaces/vite-vue -- --port 6009 --no-open" "npm run storybook -workspace workspaces/vite-vue-ts -- --port 6010 --no-open"
+    

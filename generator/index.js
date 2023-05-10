@@ -4,30 +4,13 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { JsPackageManager } from '@storybook/cli';
 
+import { viteTemplates, generatorVite, generateViteStorybook } from './vite.js';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const examplesDir = path.join(__dirname, '../examples');
-
-/**
- * Set of templates which Vite can generate
- */
-export const availableTemplates = [
-  'vanilla',
-  'vanilla-ts',
-  'vue',
-  'vue-ts',
-  'react',
-  'react-ts',
-  'react-swc',
-  'react-swc-ts',
-  'preact',
-  'preact-ts',
-  'lit',
-  'lit-ts',
-  'svelte',
-  'svelte-ts',
-];
+const compositionDir = path.join(__dirname, '../examples/composition');
 
 /**
  * Update metadata in package.json
@@ -73,82 +56,14 @@ export const generatorStoryDocker = async (outputDir) => {
 };
 
 /**
- * Add storybook config files, boilerplate stories & components and npm scripts
- */
-export const generatorStorybook = async (template, outputDir) => {
-  if (!template) {
-    console.log('Please specify a Vite template');
-    return;
-  }
-
-  const optionsSet = new Set();
-  if (template.includes('vanilla')) {
-    optionsSet.add('--type');
-    optionsSet.add('html');
-  }
-  const optionsArr = Array.from(optionsSet);
-  const sb = spawn('npx', ['storyD', 'add-storybook', outputDir].concat(optionsArr));
-  return new Promise((resolveFunc) => {
-    sb.stdout.on('data', (data) => {
-      if (data.includes('Adding Storybook support to')) {
-        console.log(data.toString().trim());
-      }
-    });
-
-    sb.stderr.on('data', (data) => {
-      console.error(data.toString());
-    });
-
-    sb.on('close', (code) => {
-      console.log(`Storybook's cli closed with code ${code}`);
-      resolveFunc();
-    });
-  });
-};
-
-/**
- * Generate a new Vite project
- */
-export const generatorVite = (template) => {
-  if (!template) {
-    console.log('Please specify a Vite template');
-    return;
-  }
-  if (!availableTemplates.includes(template)) {
-    console.log(`Invalid template "${template}"`);
-    return;
-  }
-  const projectDir = `vite-${template}`;
-  console.log('Generating a `Vite` app in', projectDir);
-  const sb = spawn('npm', ['create', 'vite@latest', projectDir, '--', '--template', template]);
-
-  return new Promise((resolveFunc) => {
-    sb.stdout.on('data', async (data) => {
-      if (data.includes('Scaffolding project in')) {
-        console.log('Vite scaffolding step complete');
-      }
-    });
-
-    sb.stderr.on('data', (data) => {
-      console.error(data.toString());
-    });
-
-    sb.on('close', async (code) => {
-      console.log(`Vite's cli exited with code ${code}`);
-      resolveFunc(projectDir);
-    });
-  });
-};
-
-/**
  * Generate all examples
  */
 export const generateStoryDockerExamples = async (cwd = __dirname) => {
-  for (const template of availableTemplates) {
+  for (const template of viteTemplates) {
     const projectDir = await generatorVite(template);
     const initialDir = path.join(cwd, projectDir);
     const outDir = path.join(examplesDir, projectDir);
-    await generatorStorybook(template, projectDir);
+    await generateViteStorybook(template, projectDir);
     await pkgContent(projectDir);
     await generatorStoryDocker(projectDir);
     try {
@@ -159,3 +74,48 @@ export const generateStoryDockerExamples = async (cwd = __dirname) => {
     }
   }
 };
+
+/**
+ * Generate npm scripts to run all examples
+ * @todo: generate docker-compose.yml for use in StoryDocker
+ */
+export const getExamples = async () => {
+  const dirs = await fs.readdir(examplesDir);
+  const meows =  dirs.filter((dir) => !dir.startsWith('.')).filter((dir) => !dir.includes('composition'));
+  const waitOns = new Set();
+  const examples = new Set();
+  const workspaces = new Set();
+  const refs = {};
+  meows.forEach((m, idx) => {
+    const port = 6001 + idx;
+    waitOns.add(`npx wait-on http://localhost:${port}`);
+    const machine = m.replace(/-/g, '_');
+    refs[machine] = {
+      title: m,
+      url: `http://localhost:${port}`,
+      expanded: false,
+    }
+    examples.add(`"npm run storybook -workspace examples/${m} -- --port ${port} --no-open"`);
+    workspaces.add(`"npm run storybook -workspace workspaces/${m} -- --port ${port} --no-open"`);
+  })
+
+  fs.outputFileSync(
+    path.join(compositionDir, '.storybook/refs.js'),
+    `export default ${JSON.stringify(refs, null, 2)}`
+  );
+  const rootDir = path.join(__dirname, '../');
+  const packageManager = new JsPackageManager({ cwd: rootDir });
+  const initialPackageJson = packageManager.retrievePackageJson();
+  initialPackageJson.scripts['local-children'] = `npx concurrently ${Array.from(examples).join(' ')}`;
+  initialPackageJson.scripts['local-parent'] = Array.from(waitOns).join(' && ') + ' && npm run storybook -workspace examples/composition -- --port 2002';
+  initialPackageJson.scripts['local'] = 'npx concurrently "npm run local-children" "npm run local-parent"';
+
+  try {
+    await fs.outputFile(path.join(rootDir, './package.json'), JSON.stringify(initialPackageJson, null, 2))
+    console.log('Updated project package metadata');
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
+getExamples()
