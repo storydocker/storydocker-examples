@@ -1,5 +1,5 @@
 
-name: 'UI Tests'
+name: 'UI Tests for vite-react-ts'
 
 on: push
 
@@ -17,9 +17,9 @@ jobs:
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Build Storybook
-        run: npm run build-storybook -w examples/vite-react
+        run: npm run build-storybook -w examples/vite-react-ts
       - name: Serve Storybook and run tests
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-          "npx http-server ./examples/vite-react/storybook-static --port 6001 --silent" \
-          "npx wait-on http://127.0.0.1:6001 && npx test-storybook  --url http://127.0.0.1:6001 --config-dir ./examples/vite-react/.storybook --coverage"
+          "npx http-server ./examples/vite-react-ts/storybook-static --port 6004 --silent" \
+          "npx wait-on http://127.0.0.1:6004 && npx test-storybook  --url http://127.0.0.1:6004 --config-dir ./examples/vite-react-ts/.storybook --coverage"

@@ -4,6 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { JsPackageManager } from '@storybook/cli';
 
+import { generateUiTestConfig } from './github.js';
 import { viteTemplates, generatorVite, generateViteStorybook } from './vite.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -97,6 +98,7 @@ export const getExamples = async () => {
     }
     examples.add(`"npm run storybook -workspace examples/${m} -- --port ${port} --no-open"`);
     workspaces.add(`"npm run storybook -workspace workspaces/${m} -- --port ${port} --no-open"`);
+    generateUiTestConfig(m, `examples/${m}`, port);
   })
 
   fs.outputFileSync(
