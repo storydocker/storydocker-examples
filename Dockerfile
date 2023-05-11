@@ -1,4 +1,4 @@
-FROM ghcr.io/storydocker/storydocker:main@sha256:f47132896a7323b305aa62f0c8c150fac1148a98a4b206a3d9c42ae6249f975c
+FROM ghcr.io/storydocker/storydocker:main@sha256:a66d66d1a3fc098c764727e1ced7c577984547b8930fc4a3e08a708e1676e8af
 
 WORKDIR /usr/src/app
 
