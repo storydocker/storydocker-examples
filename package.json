@@ -24,7 +24,7 @@
     "examples/*"
   ],
   "dependencies": {
-    "storydocker-storybook": "^0.0.2"
+    "storydocker-storybook": "^0.0.4"
   },
   "devDependencies": {},
   "peerDependencies": {}

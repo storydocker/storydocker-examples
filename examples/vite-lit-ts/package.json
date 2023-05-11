@@ -12,11 +12,11 @@
     "test-storybook": "test-storybook --url http://localhost:${SB_PORT:-6006}  --coverage"
   },
   "dependencies": {
-    "lit": "^2.6.1"
+    "lit": "^2.7.4"
   },
   "devDependencies": {
-    "typescript": "^5.0.2",
-    "vite": "^4.3.2"
+    "typescript": "^5.0.4",
+    "vite": "^4.3.5"
   },
   "peerDependencies": {}
 }
