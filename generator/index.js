@@ -6,6 +6,7 @@ import { JsPackageManager } from '@storybook/cli';
 
 import { generateUiTestConfig } from './github.js';
 import { viteTemplates, generatorVite, generateViteStorybook } from './vite.js';
+import { astroTemplates, generatorAstro, generateAstroStorybook } from './astro.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,7 +23,7 @@ export const pkgContent = async (outputDir) => {
     return;
   }
   const packageManager = new JsPackageManager({ cwd: outputDir });
-  const initialPackageJson = packageManager.retrievePackageJson();
+  const initialPackageJson = await packageManager.retrievePackageJson();
   initialPackageJson.name = `@storydocker-examples/${initialPackageJson.name}`;
   try {
     await fs.outputFile(path.join(outputDir, './package.json'), JSON.stringify(initialPackageJson, null, 2))
@@ -74,6 +75,20 @@ export const generateStoryDockerExamples = async (cwd = __dirname) => {
       console.error(err)
     }
   }
+  // for (const template of astroTemplates) {
+  //   const projectDir = await generatorAstro(template);
+  //   const initialDir = path.join(cwd, projectDir);
+  //   const outDir = path.join(examplesDir, projectDir);
+  //   await generateAstroStorybook(template, projectDir);
+  //   await pkgContent(projectDir);
+  //   await generatorStoryDocker(projectDir);
+  //   try {
+  //     await fs.move(initialDir, outDir, { overwrite: true })
+  //     console.log(`"${template}" project setup complete and moved to ${outDir}.`);
+  //   } catch (err) {
+  //     console.error(err)
+  //   }
+  // }
 };
 
 /**
@@ -82,7 +97,7 @@ export const generateStoryDockerExamples = async (cwd = __dirname) => {
  */
 export const getExamples = async () => {
   const dirs = await fs.readdir(examplesDir);
-  const meows =  dirs.filter((dir) => !dir.startsWith('.')).filter((dir) => !dir.includes('composition'));
+  const meows =  dirs.filter((dir) => !dir.startsWith('.')).filter((dir) => dir.includes('vite'));
   const waitOns = new Set();
   const examples = new Set();
   const workspaces = new Set();
@@ -107,7 +122,7 @@ export const getExamples = async () => {
   );
   const rootDir = path.join(__dirname, '../');
   const packageManager = new JsPackageManager({ cwd: rootDir });
-  const initialPackageJson = packageManager.retrievePackageJson();
+  const initialPackageJson = await packageManager.retrievePackageJson();
   initialPackageJson.scripts['local-children'] = `npx concurrently ${Array.from(examples).join(' ')}`;
   initialPackageJson.scripts['local-parent'] = Array.from(waitOns).join(' && ') + ' && npm run storybook -workspace examples/composition -- --port 2002';
   initialPackageJson.scripts['local'] = 'npx concurrently "npm run local-children" "npm run local-parent"';
@@ -120,4 +135,4 @@ export const getExamples = async () => {
   }
 }
 
-getExamples()
+// getExamples()

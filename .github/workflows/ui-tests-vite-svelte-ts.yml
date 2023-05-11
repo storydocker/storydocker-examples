@@ -21,5 +21,5 @@ jobs:
       - name: Serve Storybook and run tests
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-          "npx http-server ./examples/vite-svelte-ts/storybook-static --port 6006 --silent" \
-          "npx wait-on http://127.0.0.1:6006 && npx test-storybook  --url http://127.0.0.1:6006 --config-dir ./examples/vite-svelte-ts/.storybook --coverage"
+          "npx http-server ./examples/vite-svelte-ts/storybook-static --port 6008 --silent" \
+          "npx wait-on http://127.0.0.1:6008 && npx test-storybook  --url http://127.0.0.1:6008 --config-dir ./examples/vite-svelte-ts/.storybook --coverage"
