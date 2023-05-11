@@ -1,0 +1,20 @@
+{
+  "name": "@storydocker-examples/vite-vanilla-ts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p ${SB_PORT:-6006}",
+    "build-storybook": "storybook build",
+    "test-storybook": "test-storybook --url http://localhost:${SB_PORT:-6006}  --coverage"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2"
+  },
+  "dependencies": {},
+  "peerDependencies": {}
+}

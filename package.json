@@ -1,0 +1,31 @@
+{
+  "name": "storydocker-examples",
+  "version": "0.0.1",
+  "description": "Auto-generated application environments for testing Storybook and StoryDocker",
+  "type": "module",
+  "scripts": {
+    "generate": "node ./generate-examples.js",
+    "storybook": "npm run storybook -w examples/* --if-present",
+    "build-storybook": "npm run build-storybook -w examples/* --if-present",
+    "test": "npm run test-storybook -w examples/* --if-present",
+    "local-children": "npx concurrently \"npm run storybook -workspace examples/vite-lit -- --port 6001 --no-open\" \"npm run storybook -workspace examples/vite-lit-ts -- --port 6002 --no-open\" \"npm run storybook -workspace examples/vite-react -- --port 6003 --no-open\" \"npm run storybook -workspace examples/vite-react-ts -- --port 6004 --no-open\" \"npm run storybook -workspace examples/vite-svelte -- --port 6005 --no-open\" \"npm run storybook -workspace examples/vite-svelte-ts -- --port 6006 --no-open\" \"npm run storybook -workspace examples/vite-vanilla -- --port 6007 --no-open\" \"npm run storybook -workspace examples/vite-vanilla-ts -- --port 6008 --no-open\" \"npm run storybook -workspace examples/vite-vue -- --port 6009 --no-open\" \"npm run storybook -workspace examples/vite-vue-ts -- --port 6010 --no-open\"",
+    "local-parent": "npx wait-on http://localhost:6001 && npx wait-on http://localhost:6002 && npx wait-on http://localhost:6003 && npx wait-on http://localhost:6004 && npx wait-on http://localhost:6005 && npx wait-on http://localhost:6006 && npx wait-on http://localhost:6007 && npx wait-on http://localhost:6008 && npx wait-on http://localhost:6009 && npx wait-on http://localhost:6010 && npm run storybook -workspace examples/composition -- --port 2002",
+    "local": "npx concurrently \"npm run local-children\" \"npm run local-parent\""
+  },
+  "keywords": [
+    "storydocker",
+    "docker",
+    "storybook"
+  ],
+  "author": "scottnath",
+  "license": "MIT",
+  "workspaces": [
+    "generator",
+    "examples/*"
+  ],
+  "dependencies": {
+    "storydocker-storybook": "^0.0.2"
+  },
+  "devDependencies": {},
+  "peerDependencies": {}
+}
