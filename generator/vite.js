@@ -19,9 +19,8 @@ export const viteTemplates = [
   // swc versions fighting with vite/each other
   // 'react-swc',
   // 'react-swc-ts',
-  // not in storydocker yet
-  // 'preact',
-  // 'preact-ts',
+  'preact',
+  'preact-ts',
   'lit',
   'lit-ts',
   'svelte',
