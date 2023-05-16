@@ -2,12 +2,25 @@ services:
   client:
     build:
       context: .
-      dockerfile: Dockerfile.storydocker
+      dockerfile: ./Dockerfile.storydocker
     ports:
-      # must be same port as in Dockerfile, variable: `STORYBOOK_PORT`
+      - 6001:6001
+      - 6002:6002
+      - 6003:6003
+      - 6004:6004
       - 6006:6006
     volumes:
-      # `application` should be the same as `WORKSPACE_DIR` in `Dockerfile.example`
-      - .:/usr/src/app/workspaces/application
-    command: npm run storybook
-    
+      - ./src:/usr/src/app/workspaces/application/src
+      - ./astro.config.mjs:/usr/src/app/workspaces/application/astro.config.mjs
+      - ./public:/usr/src/app/workspaces/application/public
+      - ./.storybook:/usr/src/app/workspaces/application/.storybook
+      - ./.framework-storybooks:/usr/src/app/workspaces/application/.framework-storybooks
+    command: npx concurrently "npx wait-on http://localhost:6001 && \
+      npx wait-on http://localhost:6002 && \
+      npx wait-on http://localhost:6003 && \
+      npx wait-on http://localhost:6004 && \
+      npm run storybook  -w workspaces/application" \
+      "npm run storybook -w workspaces/application -- --config-dir .framework-storybooks/.storybook-preact --port 6001 --no-open" \
+      "npm run storybook -w workspaces/application -- --config-dir .framework-storybooks/.storybook-react --port 6002 --no-open" \
+      "npm run storybook -w workspaces/application -- --config-dir .framework-storybooks/.storybook-svelte --port 6003 --no-open" \
+      "npm run storybook -w workspaces/application -- --config-dir .framework-storybooks/.storybook-vue --port 6004 --no-open"
