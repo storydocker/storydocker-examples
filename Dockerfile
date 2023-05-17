@@ -6,7 +6,6 @@ WORKDIR /usr/src/app
 ENV NPM_CONFIG_LOGLEVEL verbose
 
 COPY ./examples ./workspaces/
-RUN rm -rf ./workspaces/astro-framework-multiple
 RUN npm i && npm cache clean --force
 
 # Make storybook port available externally

@@ -31,5 +31,8 @@
     "solid-js": "^1.7.5",
     "svelte": "^3.59.1",
     "vue": "^3.3.2"
+  },
+  "devDependencies": {
+    "storydocker-storybook": "^0.0.6"
   }
 }
