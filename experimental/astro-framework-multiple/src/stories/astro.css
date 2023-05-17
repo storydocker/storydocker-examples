@@ -1,0 +1,9 @@
+main astro-island {
+  width: 49%;
+  border: 2px solid blue;
+  display: inline-block;
+}
+
+main astro-island .counter {
+ margin-top: 0;
+}

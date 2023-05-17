@@ -6,7 +6,9 @@ import '../styles/global.css';
 // For JSX components, all the common ways of exporting (under a namespace, specific export, default export etc) are supported!
 import * as react from '../components/ReactCounter';
 import { PreactCounter } from '../components/PreactCounter';
-import SolidCounter from '../components/SolidCounter';
+
+// Storybook solidjs support not ready for primetime yet
+// import SolidCounter from '../components/SolidCounter';
 
 import VueCounter from '../components/VueCounter.vue';
 import SvelteCounter from '../components/SvelteCounter.svelte';
@@ -31,10 +33,6 @@ import SvelteCounter from '../components/SvelteCounter.svelte';
 			<PreactCounter client:visible>
 				<h1>Hello from Preact!</h1>
 			</PreactCounter>
-
-			<SolidCounter client:visible>
-				<h1>Hello from Solid!</h1>
-			</SolidCounter>
 
 			<VueCounter client:visible>
 				<h1>Hello from Vue!</h1>

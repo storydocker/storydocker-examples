@@ -12,6 +12,7 @@ const config = {
   docs: {
     autodocs: "tag",
   },
+  staticDirs: ['../public', '../dist'],
   refs,
   async viteFinal(config, options) {
     // Ensures that the cache directory is inside the project directory
