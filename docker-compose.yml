@@ -18,7 +18,42 @@ services:
       - 6012:6012
       - 2002:2002
     volumes:
-      - ./examples:/usr/src/app/workspaces/
-    command: npx concurrently "npx wait-on http://localhost:6001 && npx wait-on http://localhost:6002 && npx wait-on http://localhost:6003 && npx wait-on http://localhost:6004 && npx wait-on http://localhost:6005 && npx wait-on http://localhost:6006 && npx wait-on http://localhost:6007 && npx wait-on http://localhost:6008 && npx wait-on http://localhost:6009 && npx wait-on http://localhost:6010 && && npx wait-on http://localhost:6011 && npx wait-on http://localhost:6012 npm run storybook -workspace workspaces/composition -- --port 2002" \
-      npx concurrently "npm run storybook -workspace workspaces/vite-lit -- --port 6001 --no-open" "npm run storybook -workspace workspaces/vite-lit-ts -- --port 6002 --no-open" "npm run storybook -workspace workspaces/vite-preact -- --port 6003 --no-open" "npm run storybook -workspace workspaces/vite-preact-ts -- --port 6004 --no-open" "npm run storybook -workspace workspaces/vite-react -- --port 6005 --no-open" "npm run storybook -workspace workspaces/vite-react-ts -- --port 6006 --no-open" "npm run storybook -workspace workspaces/vite-svelte -- --port 6007 --no-open" "npm run storybook -workspace workspaces/vite-svelte-ts -- --port 6008 --no-open" "npm run storybook -workspace workspaces/vite-vanilla -- --port 6009 --no-open" "npm run storybook -workspace workspaces/vite-vanilla-ts -- --port 6010 --no-open" "npm run storybook -workspace workspaces/vite-vue -- --port 6011 --no-open" "npm run storybook -workspace workspaces/vite-vue-ts -- --port 6012 --no-open"
+      - ./examples/composition:/usr/src/app/workspaces/composition
+      - ./examples/vite-lit:/usr/src/app/workspaces/vite-lit
+      - ./examples/vite-lit-ts:/usr/src/app/workspaces/vite-lit-ts
+      - ./examples/vite-preact:/usr/src/app/workspaces/vite-preact
+      - ./examples/vite-preact-ts:/usr/src/app/workspaces/vite-preact-ts
+      - ./examples/vite-react:/usr/src/app/workspaces/vite-react
+      - ./examples/vite-react-ts:/usr/src/app/workspaces/vite-react-ts
+      - ./examples/vite-svelte:/usr/src/app/workspaces/vite-svelte
+      - ./examples/vite-svelte-ts:/usr/src/app/workspaces/vite-svelte-ts
+      - ./examples/vite-vanilla:/usr/src/app/workspaces/vite-vanilla
+      - ./examples/vite-vanilla-ts:/usr/src/app/workspaces/vite-vanilla-ts
+      - ./examples/vite-vue:/usr/src/app/workspaces/vite-vue
+      - ./examples/vite-vue-ts:/usr/src/app/workspaces/vite-vue-ts
+    command: npx concurrently "npx wait-on http://localhost:6001 && \
+        npx wait-on http://localhost:6002 && \
+        npx wait-on http://localhost:6003 && \
+        npx wait-on http://localhost:6004 && \
+        npx wait-on http://localhost:6005 && \
+        npx wait-on http://localhost:6006 && \
+        npx wait-on http://localhost:6007 && \
+        npx wait-on http://localhost:6008 && \
+        npx wait-on http://localhost:6009 && \
+        npx wait-on http://localhost:6010 && \
+        npx wait-on http://localhost:6011 && \
+        npx wait-on http://localhost:6012 && \
+        npm run storybook -workspace workspaces/composition -- --port 2002" \
+        "npm run storybook -workspace workspaces/vite-lit -- --port 6001 --no-open" \
+        "npm run storybook -workspace workspaces/vite-lit-ts -- --port 6002 --no-open" \
+        "npm run storybook -workspace workspaces/vite-preact -- --port 6003 --no-open" \
+        "npm run storybook -workspace workspaces/vite-preact-ts -- --port 6004 --no-open" \
+        "npm run storybook -workspace workspaces/vite-react -- --port 6005 --no-open" \
+        "npm run storybook -workspace workspaces/vite-react-ts -- --port 6006 --no-open" \
+        "npm run storybook -workspace workspaces/vite-svelte -- --port 6007 --no-open" \
+        "npm run storybook -workspace workspaces/vite-svelte-ts -- --port 6008 --no-open"
+        "npm run storybook -workspace workspaces/vite-vanilla -- --port 6009 --no-open"
+        "npm run storybook -workspace workspaces/vite-vanilla-ts -- --port 6010 --no-open"
+        "npm run storybook -workspace workspaces/vite-vue -- --port 6011 --no-open"
+        "npm run storybook -workspace workspaces/vite-vue-ts -- --port 6012 --no-open"
     

@@ -12,12 +12,12 @@
     "test-storybook": "test-storybook --url http://localhost:${SB_PORT:-6006}  --coverage"
   },
   "dependencies": {
-    "preact": "^10.13.1"
+    "preact": "^10.14.1"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.5.0",
-    "typescript": "^5.0.2",
-    "vite": "^4.3.2"
+    "typescript": "^5.0.4",
+    "vite": "^4.3.6"
   },
   "peerDependencies": {}
 }

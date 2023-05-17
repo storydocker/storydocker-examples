@@ -20,12 +20,10 @@
   "author": "scottnath",
   "license": "MIT",
   "workspaces": [
-    "generator",
     "examples/*"
   ],
   "dependencies": {
-    "storydocker-storybook": "^0.0.4"
-  },
-  "devDependencies": {},
-  "peerDependencies": {}
+    "concurrently": "^8.0.1",
+    "storydocker-storybook": "^0.0.6"
+  }
 }
