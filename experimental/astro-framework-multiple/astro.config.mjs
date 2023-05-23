@@ -9,4 +9,7 @@ import solid from '@astrojs/solid-js';
 export default defineConfig({
 	// Enable many frameworks to support all different kinds of components.
 	integrations: [preact(), react(), svelte(), vue(), solid()],
+  build: {
+    assetsPrefix: '/storydocker-examples/'
+  }
 });

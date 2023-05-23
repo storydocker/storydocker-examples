@@ -14,22 +14,22 @@ export const references = {
   "astro_preact": {
     "title": "preact",
     "local": "http://localhost:6001",
-    "ghpages": "/preact"
+    "ghpages": "/storydocker-examples/preact"
   },
   "astro_react": {
     "title": "react",
     "local": "http://localhost:6002",
-    "ghpages": "/react"
+    "ghpages": "/storydocker-examples/react"
   },
   "astro_svelte": {
     "title": "svelte",
     "local": "http://localhost:6003",
-    "ghpages": "/svelte"
+    "ghpages": "/storydocker-examples/svelte"
   },
   "astro_vue": {
     "title": "vue",
     "local": "http://localhost:6004",
-    "ghpages": "/vue"
+    "ghpages": "/storydocker-examples/vue"
   },
 }
 
