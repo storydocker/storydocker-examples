@@ -1,5 +1,5 @@
 import path from "path";
-import refs from "./refs.js";
+import { refs } from "./refs.js";
 
 /** @type { import('@storybook/html-vite').StorybookConfig } */
 const config = {
