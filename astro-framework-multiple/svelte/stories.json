@@ -1,0 +1,1 @@
+{"v":3,"stories":{"svelte--counter":{"id":"svelte--counter","title":"Svelte","name":"Counter","importPath":"./.framework-storybooks/stories/SvelteCounter.stories.js","tags":["story"],"kind":"Svelte","story":"Counter","parameters":{"__id":"svelte--counter","docsOnly":false,"fileName":"./.framework-storybooks/stories/SvelteCounter.stories.js"}}}}

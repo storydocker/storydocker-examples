@@ -1,0 +1,1 @@
+{"v":3,"stories":{"vue--counter":{"id":"vue--counter","title":"Vue","name":"Counter","importPath":"./.framework-storybooks/stories/VueCounter.stories.js","tags":["story"],"kind":"Vue","story":"Counter","parameters":{"__id":"vue--counter","docsOnly":false,"fileName":"./.framework-storybooks/stories/VueCounter.stories.js"}}}}

@@ -1,0 +1,1 @@
+{"v":3,"stories":{"react--counter":{"id":"react--counter","title":"React","name":"Counter","importPath":"./.framework-storybooks/stories/ReactCounter.stories.js","tags":["story"],"kind":"React","story":"Counter","parameters":{"__id":"react--counter","docsOnly":false,"fileName":"./.framework-storybooks/stories/ReactCounter.stories.js"}}}}

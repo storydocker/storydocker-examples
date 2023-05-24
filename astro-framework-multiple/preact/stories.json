@@ -1,0 +1,1 @@
+{"v":3,"stories":{"preact--counter":{"id":"preact--counter","title":"Preact","name":"Counter","importPath":"./.framework-storybooks/stories/PreactCounter.stories.js","tags":["story"],"kind":"Preact","story":"Counter","parameters":{"__id":"preact--counter","docsOnly":false,"fileName":"./.framework-storybooks/stories/PreactCounter.stories.js"}}}}
