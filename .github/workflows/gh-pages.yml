@@ -29,7 +29,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - run: npm ci
-      - run: npm run build-books -workspace experimental/astro-framework-multiple
+      - run: npm run build-ghpages -workspace experimental/astro-framework-multiple
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/ghpages-deploy' }}
@@ -37,3 +37,4 @@ jobs:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_dir: ./experimental/astro-framework-multiple/storybook-static
           publish_branch: ghpages
+          destination_dir: astro-framework-multiple
