@@ -3,7 +3,7 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - ghpages-deploy
+      - main
 
 jobs:
   deploy:
@@ -32,7 +32,7 @@ jobs:
       - run: npm run build-ghpages -workspace experimental/astro-framework-multiple
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/ghpages-deploy' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_dir: ./experimental/astro-framework-multiple/storybook-static
