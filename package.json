@@ -20,7 +20,8 @@
   "author": "scottnath",
   "license": "MIT",
   "workspaces": [
-    "examples/*"
+    "examples/*",
+    "experimental/*"
   ],
   "dependencies": {
     "concurrently": "^8.0.1",
