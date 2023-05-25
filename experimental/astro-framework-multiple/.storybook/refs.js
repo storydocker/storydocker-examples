@@ -1,4 +1,8 @@
 /**
+ * @fileoverview StorybookRefs content generated according to destination environment
+ */
+
+/**
  * StorybookRefs content for one Storybook instance
  * @typedef {Object} StorybookReferences
  * @property {string} title - Title of the Storybook instance
@@ -33,8 +37,12 @@ export const references = {
   },
 }
 
+
+
 /**
- * Generates `CoreCommon_StorybookRefs` for each child storybook according to the environment
+ * Generates a Storybook ref (`{ title: string; url: string }`) for each child storybook. 
+ *  `url` is chosen based on destination environment
+ * @returns {Object.<string, import('@storybook/core-common').StorybookRefs>}
  */
 export const refs = (config, { configType }) => {
   let urlKey = 'ghpages';
