@@ -1,5 +1,25 @@
 import path from "path";
-import refs from "./refs.js";
+import references from "./refs.js";
+
+/**
+ * Generates a set of Storybook refs (`{ title: string; url: string }`) for each child storybook. 
+ *  `url` is chosen based on destination environment
+ * @returns {Object.<string, import('@storybook/core-common').StorybookRefs>}
+ */
+export const refs = (config, { configType }) => {
+  let urlKey = 'ghpages';
+  if (configType === 'DEVELOPMENT') {
+    urlKey = 'local';
+  }
+  const newRefs = {};
+  for (const [key, value] of Object.entries(references)) {
+    newRefs[key] = {
+      title: value.title,
+      url: value[urlKey],
+    }
+  }
+  return newRefs;
+}
 
 /** @type { import('@storybook/html-vite').StorybookConfig } */
 const config = {
