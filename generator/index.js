@@ -162,7 +162,7 @@ export const generatePackageScripts = async (references = {}) => {
   initialPackageJson.scripts['local-children'] = `npx concurrently ${Array.from(examples).join(' ')}`;
   initialPackageJson.scripts['local-parent'] = Array.from(waitOns).join(' && ') + ' && npm run storybook -workspace examples/composition -- --port 2002';
   initialPackageJson.scripts['local'] = 'npx concurrently "npm run local-children" "npm run local-parent"';
-  initialPackageJson.scripts['build-children'] = `npx concurrently ${Array.from(builders).join(' ')}`;
+  initialPackageJson.scripts['build-children'] = `${Array.from(builders).join(' && ')}`;
   initialPackageJson.scripts['build-parent'] = `npm run build-storybook -workspace examples/composition -- --output-dir ${buildDirRelative}`;
   initialPackageJson.scripts['build'] = 'npm run build-parent && npm run build-children';
 
