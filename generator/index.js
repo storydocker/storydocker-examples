@@ -154,7 +154,7 @@ export const generatePackageScripts = async (references = {}) => {
   for (const [key, value] of Object.entries(references)) {
     waitOns.add(`npx wait-on ${value.local}`);
     examples.add(`"npm run storybook -workspace examples/${value.directory} -- --port ${value.port} --no-open"`);
-    builders.add(`"npm run build-storybook -workspace examples/${value.directory} -- --output-dir ${buildDirRelative}/${value.directory}"`);
+    builders.add(`npm run build-storybook -workspace examples/${value.directory} -- --output-dir ${buildDirRelative}/${value.directory}`);
     generateUiTestConfig(value.directory, `examples/${value.directory}`, value.port);
   }
   const packageManager = new JsPackageManager({ cwd: rootDir });
@@ -163,8 +163,8 @@ export const generatePackageScripts = async (references = {}) => {
   initialPackageJson.scripts['local-parent'] = Array.from(waitOns).join(' && ') + ' && npm run storybook -workspace examples/composition -- --port 2002';
   initialPackageJson.scripts['local'] = 'npx concurrently "npm run local-children" "npm run local-parent"';
   initialPackageJson.scripts['build-children'] = `${Array.from(builders).join(' && ')}`;
-  initialPackageJson.scripts['build-parent'] = `npm run build-storybook -workspace examples/composition -- --output-dir ${buildDirRelative}`;
-  initialPackageJson.scripts['prebuild'] = 'npm run build-parent';
+  initialPackageJson.scripts['build-parent'] = `npm run build-storybook -workspace examples/composition -- --output-dir ${buildDirRelative}/composition`;
+  initialPackageJson.scripts['prebuild'] = 'mkdir -p ghpages & npm run build-parent';
   initialPackageJson.scripts['build'] = 'npm run build-children';
 
   try {
@@ -174,7 +174,6 @@ export const generatePackageScripts = async (references = {}) => {
     throw new Error(err);
   }
 }
-
 
 /**
  * Generate npm scripts to run all examples
