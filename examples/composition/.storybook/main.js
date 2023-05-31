@@ -23,7 +23,7 @@ export const refs = (config, { configType }) => {
 
 /** @type { import('@storybook/html-vite').StorybookConfig } */
 const config = {
-  stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ["../stories/**/*.mdx"],
   addons: ['@storybook/addon-essentials', '@storybook/addon-links', '@storybook/addon-interactions', '@storybook/addon-coverage'],
   framework: {
     name: "@storybook/html-vite",
