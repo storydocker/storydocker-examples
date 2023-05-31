@@ -25,6 +25,6 @@
   "homepage": "https://github.com/storydocker/storydocker-examples#readme",
   "dependencies": {
     "fs-extra": "^11.1.1",
-    "storydocker-cli": "^0.0.5"
+    "storydocker-cli": "^0.0.6"
   }
 }

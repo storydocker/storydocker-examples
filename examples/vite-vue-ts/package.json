@@ -12,12 +12,12 @@
     "test-storybook": "test-storybook --url http://localhost:${SB_PORT:-6006}  --coverage"
   },
   "dependencies": {
-    "vue": "^3.3.2"
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
     "typescript": "^5.0.4",
-    "vite": "^4.3.6",
+    "vite": "^4.3.9",
     "vue-tsc": "^1.6.5"
   },
   "peerDependencies": {}

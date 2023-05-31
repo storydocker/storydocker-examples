@@ -89,7 +89,11 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+
+# build output
+dist/
+storybook-static/
+ghpages/
 
 # Gatsby files
 .cache/
