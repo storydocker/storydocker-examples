@@ -23,7 +23,7 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
     6001
-  ]
+  ],
 
 	// Uncomment the next line if you want start specific services in your Docker Compose config.
 	// "runServices": [],
@@ -39,4 +39,9 @@
 
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "devcontainer"
+"features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "version": "latest"
+    }
+}
 }
