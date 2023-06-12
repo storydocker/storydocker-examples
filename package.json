@@ -31,8 +31,8 @@
     "experimental/*"
   ],
   "dependencies": {
-    "concurrently": "^8.0.1",
-    "storydocker-storybook": "^0.0.8"
+    "concurrently": "^8.2.0",
+    "storydocker-storybook": "^0.0.9"
   },
   "devDependencies": {},
   "peerDependencies": {}
