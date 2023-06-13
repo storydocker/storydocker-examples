@@ -5,11 +5,11 @@ import astroPage from '../../dist/index.html?raw';
 
 
 export default {
-  title: 'Parent/Astro',
+  title: 'Astro',
   render: () => {
     return astroPage;
   },
 };
 
-export const Dist = {};
+export const Astro = {};
 
