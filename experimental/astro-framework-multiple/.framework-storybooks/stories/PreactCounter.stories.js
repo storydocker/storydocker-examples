@@ -5,7 +5,7 @@ export default {
   component: PreactCounter,
 };
 
-export const Counter = {
+export const Preact = {
   args: {
     children: 'Preact Counter'
   },
