@@ -18,7 +18,8 @@
     "sbook-children": "npx concurrently \"npm run storybook -- --config-dir .framework-storybooks/.storybook-preact --port 6001 --no-open\"  \"npm run storybook -- --config-dir .framework-storybooks/.storybook-react --port 6002 --no-open\" \"npm run storybook -- --config-dir .framework-storybooks/.storybook-svelte --port 6003 --no-open\" \"npm run storybook -- --config-dir .framework-storybooks/.storybook-vue --port 6004 --no-open\"",
     "sbook-parent": "npx wait-on http://localhost:6001 && npx wait-on http://localhost:6002 && npx wait-on http://localhost:6003  && npx wait-on http://localhost:6004 && npm run storybook",
     "presbook": "npm run build",
-    "sbook": "npx concurrently \"npm run sbook-children\" \"npm run sbook-parent\""
+    "sbook": "npx concurrently \"npm run sbook-children\" \"npm run sbook-parent\"",
+    "test": "vitest"
   },
   "stackblitz": {
     "startCommand": "npm i storydocker-storybook -D && npm run sbook"
@@ -38,6 +39,15 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "storydocker-storybook": "^0.0.9"
+    "@sveltejs/vite-plugin-svelte": "^2.4.1",
+    "@testing-library/preact": "^3.2.3",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/svelte": "^3.2.2",
+    "@testing-library/vue": "^7.0.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "jsdom": "^22.1.0",
+    "storydocker-storybook": "^0.0.9",
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.32.0"
   }
 }

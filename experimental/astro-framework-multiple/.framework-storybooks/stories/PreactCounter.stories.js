@@ -14,16 +14,16 @@ export const Preact = {
     const elements = await getElements(canvasElement);
     step('preact tests', async () => {
       await step('ensure elements', async () => {
-        await ensureElements(elements, args);
+        await ensureElements(elements);
       });
       await step('mouse interaction', async () => {
-        await mouseInteraction(elements, args);
+        await mouseInteraction(elements);
       });
       await step('keyboard navigation', async () => {
-        await keyboardNavigation(elements, args);
+        await keyboardNavigation(elements);
       });
       await step('keyboard interaction', async () => {
-        await keyboardInteraction(elements, args);
+        await keyboardInteraction(elements);
       });
     });
   },

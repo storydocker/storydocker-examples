@@ -31,7 +31,7 @@ export const ensureElements = async (elements, args) => {
 /**
  * Test mouse interaction
  */
-export const mouseInteraction = async (elements, args) => {
+export const mouseInteraction = async (elements) => {
   const { minus, plus, count } = elements;
   const initCount = parseInt(count.textContent);
   await userEvent.click(plus);
@@ -44,23 +44,25 @@ export const mouseInteraction = async (elements, args) => {
   await expect(parseInt(count.textContent)).toBe(initCount);
   await userEvent.click(minus);
   await expect(parseInt(count.textContent)).toBe(initCount - 1);
+  // reset user focus
+  await minus.blur();
 }
 
 /**
  * Test keyboard interaction
  */
-export const keyboardNavigation = async (elements, args) => {
+export const keyboardNavigation = async (elements) => {
   const { minus, plus, container } = elements;
   await userEvent.tab({ focusTrap: container });
-  await expect(plus).toHaveFocus();
-  await userEvent.tab({ focusTrap: container });
   await expect(minus).toHaveFocus();
+  await userEvent.tab({ focusTrap: container });
+  await expect(plus).toHaveFocus();
 }
 
 /**
  * Test keyboard interactions
  */
-export const keyboardInteraction = async (elements, args) => {
+export const keyboardInteraction = async (elements) => {
   const { minus, plus, count, container } = elements;
   const initCount = parseInt(count.textContent);
   await plus.focus();
@@ -75,4 +77,6 @@ export const keyboardInteraction = async (elements, args) => {
   await expect(parseInt(count.textContent)).toBe(initCount);
   await userEvent.keyboard('{enter}');
   await expect(parseInt(count.textContent)).toBe(initCount - 1);
+  // reset user focus
+  await minus.blur();
 }
