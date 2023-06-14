@@ -19,7 +19,8 @@
     "sbook-parent": "npx wait-on http://localhost:6001 && npx wait-on http://localhost:6002 && npx wait-on http://localhost:6003  && npx wait-on http://localhost:6004 && npm run storybook",
     "presbook": "npm run build",
     "sbook": "npx concurrently \"npm run sbook-children\" \"npm run sbook-parent\"",
-    "test": "vitest"
+    "test": "vitest",
+    "test-local": "vitest run src"
   },
   "stackblitz": {
     "startCommand": "npm i storydocker-storybook -D && npm run sbook"
