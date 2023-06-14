@@ -1,1 +1,1 @@
-{"v":4,"entries":{"preact--preact":{"id":"preact--preact","title":"Preact","name":"Preact","importPath":"./.framework-storybooks/stories/PreactCounter.stories.js","tags":["story"],"type":"story"}}}
+{"v":4,"entries":{"preact--preact":{"id":"preact--preact","title":"Preact","name":"Preact","importPath":"./.framework-storybooks/stories/PreactCounter.stories.js","tags":["play-fn","story"],"type":"story"}}}

@@ -1,1 +1,1 @@
-{"v":4,"entries":{"svelte--svelte":{"id":"svelte--svelte","title":"Svelte","name":"Svelte","importPath":"./.framework-storybooks/stories/SvelteCounter.stories.js","tags":["story"],"type":"story"}}}
+{"v":4,"entries":{"svelte--svelte":{"id":"svelte--svelte","title":"Svelte","name":"Svelte","importPath":"./.framework-storybooks/stories/SvelteCounter.stories.js","tags":["play-fn","story"],"type":"story"}}}
