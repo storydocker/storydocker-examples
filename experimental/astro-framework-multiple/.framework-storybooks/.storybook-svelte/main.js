@@ -12,7 +12,7 @@ const config = {
   },
   async viteFinal(config) {
     // Ensures that the cache directory does not conflict with other frameworks
-    config.cacheDir = path.join(__dirname, '../../node_modules/.vite-svelte')
+    config.cacheDir = path.join(__dirname, './.vite-svelte')
     return config;
   },
 };

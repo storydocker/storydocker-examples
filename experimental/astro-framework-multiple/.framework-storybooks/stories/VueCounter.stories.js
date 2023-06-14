@@ -5,7 +5,7 @@ export default {
   component: VueCounter,
 };
 
-export const Counter = {
+export const Vue = {
   render: () => ({
     components: {
       VueCounter,

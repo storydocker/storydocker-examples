@@ -5,7 +5,7 @@ export default {
   component: SvelteCounter,
 };
 
-export const Counter = {
+export const Svelte = {
   args: {
     children: 'Svelte Counter'
   },
