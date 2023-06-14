@@ -1,10 +1,11 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite'
-import {svelte} from '@sveltejs/vite-plugin-svelte';
+import {svelte} from '@sveltejs/vite-plugin-svelte'
 import vue from '@vitejs/plugin-vue'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
-  plugins: [svelte({hot: !process.env.VITEST}), vue()],
+  plugins: [tsconfigPaths(), svelte({hot: !process.env.VITEST}), vue()],
 	test: {
     alias: {
       '@/': new URL('./src/', import.meta.url).pathname,
