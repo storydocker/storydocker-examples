@@ -8,7 +8,6 @@ ENV NPM_CONFIG_LOGLEVEL verbose
 COPY ./ ./workspaces/application
 COPY ./.dockerignore ./
 RUN npm i && npm cache clean --force
-RUN npm i concurrently -g
 RUN npm update vite
 
 # Make storybook port available externally

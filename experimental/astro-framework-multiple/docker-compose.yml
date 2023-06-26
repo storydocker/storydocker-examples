@@ -19,8 +19,9 @@ services:
       npx wait-on http://localhost:6002 && \
       npx wait-on http://localhost:6003 && \
       npx wait-on http://localhost:6004 && \
-      npm run storybook  -w workspaces/application" \
-      "npm run storybook -w workspaces/application -- --config-dir .framework-storybooks/.storybook-preact --port 6001 --no-open" \
-      "npm run storybook -w workspaces/application -- --config-dir .framework-storybooks/.storybook-react --port 6002 --no-open" \
-      "npm run storybook -w workspaces/application -- --config-dir .framework-storybooks/.storybook-svelte --port 6003 --no-open" \
-      "npm run storybook -w workspaces/application -- --config-dir .framework-storybooks/.storybook-vue --port 6004 --no-open"
+      npm run storybook  -workspace workspaces/application" \
+      "npm run build" \
+      "npm run storybook -workspace workspaces/application -- --config-dir .framework-storybooks/.storybook-preact --port 6001 --no-open" \
+      "npm run storybook -workspace workspaces/application -- --config-dir .framework-storybooks/.storybook-react --port 6002 --no-open" \
+      "npm run storybook -workspace workspaces/application -- --config-dir .framework-storybooks/.storybook-svelte --port 6003 --no-open" \
+      "npm run storybook -workspace workspaces/application -- --config-dir .framework-storybooks/.storybook-vue --port 6004 --no-open"
