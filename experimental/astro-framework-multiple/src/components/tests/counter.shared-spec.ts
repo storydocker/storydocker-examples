@@ -53,7 +53,6 @@ export const mouseInteraction = async (elements) => {
  */
 export const keyboardNavigation = async (elements) => {
   const { minus, plus, container } = elements;
-  await document.activeElement.blur();
   await userEvent.tab({ focusTrap: container });
   await expect(minus).toHaveFocus();
   await userEvent.tab({ focusTrap: container });
