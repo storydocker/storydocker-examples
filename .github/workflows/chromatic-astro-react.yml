@@ -24,4 +24,3 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_ASTRO_REACT }}
           workingDir: experimental/astro-framework-multiple
           buildScriptName: build-book-astro-react
-          storybookBuildDir: storybook-static/react
