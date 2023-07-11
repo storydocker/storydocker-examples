@@ -1,7 +1,13 @@
 
 name: 'UI Tests for vite-lit'
 
-on: push
+on: 
+  push:
+    paths:
+    - 'examples/vite-lit/**'
+  pull_request:
+    paths: 
+    - 'examples/vite-lit/**'
 
 jobs:
   # Run interaction and accessibility tests
