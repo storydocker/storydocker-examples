@@ -19,7 +19,7 @@
     "prebuild-books": "rm -rf storybook-static && npm run build",
     "build-books": "npm run build-storybook && npm run build-books-children",
     "build-ghpages": "DEPLOY_DEST=ghpages npm run build-books",
-    "build-chromatic": "DEPLOY_DEST=ghpages npm run build-storybook",
+    "build-chromatic": "DEPLOY_DEST=chromatic npm run build-storybook",
     "test-storybook": "test-storybook --url http://localhost:${SB_PORT:-6006} --coverage",
     "test-storybook-children": "npm run test-storybook -- --config-dir .framework-storybooks/.storybook-preact  --url http://localhost:6001 && npm run test-storybook -- --config-dir .framework-storybooks/.storybook-react  --url http://localhost:6002 && npm run test-storybook -- --config-dir .framework-storybooks/.storybook-svelte  --url http://localhost:6003 && npm run test-storybook -- --config-dir .framework-storybooks/.storybook-vue  --url http://localhost:6004",
     "sbook-children": "npx concurrently \"npm run storybook -- --config-dir .framework-storybooks/.storybook-preact --port 6001 --no-open\"  \"npm run storybook -- --config-dir .framework-storybooks/.storybook-react --port 6002 --no-open\" \"npm run storybook -- --config-dir .framework-storybooks/.storybook-svelte --port 6003 --no-open\" \"npm run storybook -- --config-dir .framework-storybooks/.storybook-vue --port 6004 --no-open\"",
