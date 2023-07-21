@@ -1,5 +1,5 @@
 # Workflow name
-name: 'Chromatic'
+name: 'Chromatic astro vue'
 
 # Event for the workflow
 on: push

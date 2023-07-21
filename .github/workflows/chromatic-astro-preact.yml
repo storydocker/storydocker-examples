@@ -1,5 +1,5 @@
 # Workflow name
-name: 'Chromatic'
+name: 'Chromatic astro preact'
 
 # Event for the workflow
 on: push
