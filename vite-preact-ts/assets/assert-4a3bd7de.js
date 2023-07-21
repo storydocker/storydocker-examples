@@ -1,0 +1,2 @@
+function t(r){throw new Error('Could not dynamically require "'+r+'". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.')}var e,o;function a(){if(o)return e;o=1;function r(n,i){if(!n)throw new Error(i||"unknown assertion error")}return e=r,e}export{t as c,a as r};
+//# sourceMappingURL=assert-4a3bd7de.js.map
